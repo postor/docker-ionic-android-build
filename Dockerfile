@@ -9,6 +9,7 @@ RUN set -x \
 && apt install sudo openjdk-8-jdk gradle\
 && chmod +x *.sh \
 && ./install-node.sh \
-&& ./install-android.sh 
+&& ./install-android.sh \
+&& apt autoremove
 
 CMD /myApp/build.sh
