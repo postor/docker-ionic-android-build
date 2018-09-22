@@ -13,6 +13,7 @@ RUN set -x \
 && npm i ionic cordova yarn -g \
 && . ./install-android.sh \
 && apt remove wget unzip  -y \
+&& apt install gradle -y \
 && apt autoremove -y
 
 WORKDIR /myApp
