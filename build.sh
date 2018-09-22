@@ -1,0 +1,1 @@
+docker build -t postor/ionic-android-build .
