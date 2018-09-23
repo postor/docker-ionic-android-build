@@ -14,7 +14,9 @@ RUN set -x \
 && . ./install-android.sh \
 && apt remove wget unzip  -y \
 && apt install gradle -y \
-&& apt autoremove -y
+&& apt autoremove -y 
+
+ENV ANDROID_HOME /opt/android-sdk-linux
 
 WORKDIR /myApp
 
