@@ -1,4 +1,4 @@
-docker run -it --rm -v ./:/myApp postor/ionic-android-build /myApp/build.sh
+docker run -it --rm -v $PWD:/myApp postor/ionic-android-build /myApp/build.sh
 
 # docker run 运行镜像
 # -t 申请伪终端
