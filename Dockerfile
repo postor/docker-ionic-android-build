@@ -1,9 +1,7 @@
-#0.0.8 upgrade gradle
+#0.0.9 upgrade sdk
 
-FROM postor/ionic-android-build:0.0.7
+FROM postor/ionic-android-build:0.0.8
 
 RUN set -x \
-&& apt-get install -y software-properties-common \
-&& sudo add-apt-repository ppa:cwchien/gradle -y \
-&& apt-get update -y \
-&& apt upgrade gradle -y 
+&& cd /opt/android-sdk-linux/bin \
+&& (while sleep 3; do echo "y"; done)|sudo ./android update sdk --no-ui --all
