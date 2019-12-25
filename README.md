@@ -1,6 +1,9 @@
 # ionic android build
 
-for ionic android build, based on ubuntu 16.04
+build your ionic to android with docker 
+
+quick glance: https://www.youtube.com/watch?v=YNOBfE7Q1uo&list=PLM1v95K5B1ntVsYvNJIxgRPppngrO_X4s
+
 
 ## features
 
