@@ -34,3 +34,19 @@ build:
 ```
 docker run --rm -v /your/app:/myApp postor/ionic-android-build ionic cordova build android
 ```
+
+for latest ionic you can use an entry
+
+```
+#!/bin/bash
+# update ionic
+npm i ionic -g
+# install packages
+npm i
+# build node
+ionic build
+# copy to android
+npx cap copy android
+# build apk
+cd android && ./gradlew assembleDebug
+```
