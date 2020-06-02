@@ -3,24 +3,15 @@ name: Docker Image CI
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '1 1 * * *'
+    - cron:  '4 14 * * *'
 
 jobs:
 
-  build:
-
+  curl:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Docker Build & Push to Docker Hub
-      uses: opspresso/action-docker@master
+    - uses: actions/checkout@master
+    - name: curl
+      uses: enflo/curl-action@master
       with:
-        args: --docker
-      env:
-        USERNAME: ${{ secrets.DOCKER_USER }}
-        PASSWORD: ${{ secrets.DOCKER_ACCESS_TOKEN }}
-        DOCKERFILE: "Dockerfile"
-        IMAGE_NAME: ${{ secrets.DOCKER_REPO }}
-        LATEST: "true"
-    
+        curl: -X POST https://hub.docker.com/api/build/v1/source/1403cd69-02e5-410e-a1fa-cb4a005852cf/trigger/5829b010-a924-4576-8e9c-61b39ee6a809/call/
