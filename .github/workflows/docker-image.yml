@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Build & Push to Docker Hub
+      uses: opspresso/action-docker@master
+      with:
+        args: --docker
+      env:
+        USERNAME: ${{ secrets.DOCKER_USER }}
+        PASSWORD: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+        DOCKERFILE: "Dockerfile"
+        IMAGE_NAME: ${{ secrets.DOCKER_REPO }}
+        LATEST: "true"
+    
