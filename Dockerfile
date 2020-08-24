@@ -1,9 +1,23 @@
-#0.0.9 upgrade sdk
+FROM ubuntu:18.04
 
-FROM postor/ionic-android-build:0.0.8
+WORKDIR /
+
+ADD ./*.sh /
+ADD ./myApp /myApp
 
 RUN set -x \
-&& cd /opt/android-sdk-linux/tools \
-&& (while sleep 3; do echo "y"; done)|sudo ./android update sdk -u -a -t $(./android list sdk --no-ui --all | grep Build-tools | awk -F '-' '{print $1}' | paste -d',' -s | sed 's/ //g')
+&& apt update \
+&& apt install sudo openjdk-8-jdk gradle wget unzip curl -y  \
+&& chmod +x *.sh \
+&& . ./install-node.sh \
+&& . ./install-android.sh \
+&& apt remove wget unzip  -y \
+&& apt install gradle -y \
+&& apt autoremove -y  \
+&& npm install @ionic/cli cordova yarn -g 
 
-RUN npm i ionic -g
+ENV ANDROID_HOME /opt/android-sdk-linux
+
+WORKDIR /myApp
+
+CMD /myApp/build.sh
